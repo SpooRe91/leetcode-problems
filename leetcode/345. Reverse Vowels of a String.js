@@ -1,25 +1,26 @@
-var reverseVowels = function (s) {
-    const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
-    const letters = s.split('');
+/**
+Given a string s, reverse only all the vowels in the string and return it.
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
+*/
 
-    let i = 0;
-    let j = letters.length - 1;
-
+const reverseVowels = (s) => {
+    let i = 0, j = s.length - 1;
+    let str = s.split("");
+    let vowels = ["a", "e", "i", "o", "u", "A", "I", "O", "E", "U"]
     while (i < j) {
-        let left = letters[i];
-        let right = letters[j];
-
-        if (!vowels.has(left)) {
+        if (!vowels.includes(str[i])) {
             i++;
-        } else if (!vowels.has(right)) {
+        }
+        else if (!vowels.includes(str[j])) {
             j--;
         } else {
-            letters[i] = right;
+            let char = str[i];
+            str[i] = str[j]
+            str[j] = char;
             i++;
-            letters[j] = left;
             j--;
         }
     }
-    return letters.join('');
-}
-reverseVowels('leetcode')
+    return str.join("");
+};
+reverseVowels('leetcode');
